@@ -2,12 +2,20 @@
 define frodo = Character('Фродо', color="#990000")
 
 transform mid_left:
-    xalign 0.25
-    yalign 1.0
+    xalign 0.3
+    yalign 0.85
 
 transform mid_right:
-    xalign 0.75
-    yalign 1.0
+    xalign 0.7
+    yalign 0.85
+
+transform left:
+    xalign 0.05
+    yalign 0.85
+
+transform right:
+    xalign 0.95
+    yalign 0.85
 
 label start:
     play music "audio/in-the-dark.mp3"
@@ -47,30 +55,47 @@ label start:
     """
 
 label swamp:
-    play music "audio/atmosbasement.mp3_.flac"
+    play music "audio/mountain lake.mp3"
     scene bg swamp-3
     with fade
 
-    "Хранители пришли к древнему горному заболоченному озеру. Над поверхностью стоит пар. Вдалеке слышно, как булькает и капает."
+    "Хранители пришли к древнему горному озеру. Гуляет ветер. Вдалеке слышно, как что-то журчит, булькает и капает."
 
 label swamp_tree:
+    play music "audio/swamp-sounds.mp3"
     scene bg swamp
 
     "Хранители обошли озеро, на тонком перешейке двух чаш озера росло развесистое подгнивающее дерево.
     Фродо было ужасно интересно и он заглянул в дупло дерева. В дупле лежал ключ."
 
+label swamp_dead:
+    play sound "audio/end-cut.mp3"
+    scene bg swamp-2
+
+    "Группа решила пробираться по затопленной местности во что бы то ни стало.
+    Чем они пробирались дальше, тем становилось глубже."
+
+    "В конце концов они столкнулись с Бамбр Смотритель Болота. Все погибли. Плохая концовка."
+
 label mountain_path:
-    play music "audio/storm_3_siren.mp3"
+    stop sound
+    play music "audio/blizzard snow.mp3"
+
     scene bg snow
     with fade
 
     "Хранители забрались на перевал."
 
-    play music "audio/rock_breaking.flac"
     scene bg mountains-path-2
     with fade
+    play music "audio/rock_breaking.flac"
 
-    "Прямо над вами разверглось небо. Полил дождь, потом пошел снег, поднялся ураган."
+    "Прямо над вами разверглось небо."
+
+    play music "audio/blizzard snow2.mp3"
+
+    "Полил дождь, потом пошел снег, поднялся ураган."
+
 
 label door:
     play music "audio/in-the-dark.mp3"
@@ -84,11 +109,11 @@ label door:
 
     "В самом конце подьема вас ждала отвесная стена. Гэндальф внимательно посмотрел на стену."
 
-    show gendalf2 at right
-    with dissolve
-
     "В середине между сторожевыми дубами она была неестественно гладкой,
     и Гэндальф, приблизившись к ней вплотную, начал ощупывать ее руками, бормоча  какие-то непонятные слова."
+
+    show gendalf2 at right
+    with dissolve
 
     gendalf "Потом, отступив, спросил своих спутников: - А теперь? Теперь вы что-нибудь видите?"
 
@@ -102,7 +127,7 @@ label door:
     "А потом на поверхности cтены появились тонкие серебристые  линии, стали постепенно ярче,
 отчетливей, и  вскоре глазам изумленных путников открылся искусно выполненный рисунок."
 
-    show frodo at right
+    show frodo at left
 
     frodo "- Замочная скважина! - воскликнул Фродо, показав на еле заметное углубление в стени."
 
