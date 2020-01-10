@@ -51,6 +51,7 @@ define gui.hover_muted_color = '#adc199'
 define gui.text_color = '#404040'
 define gui.interface_text_color = '#404040'
 
+define gui.main_menu_text_color = '#EEEEEE'
 
 ## Fonts and Font Sizes ########################################################
 
@@ -85,8 +86,8 @@ define gui.title_text_size = 50
 ## Main and Game Menus #########################################################
 
 ## The images used for the main and game menus.
-define gui.main_menu_background = "gui/main_menu.png"
-define gui.game_menu_background = "gui/game_menu.png"
+define gui.main_menu_background = "gui/TN-First_Sight_of_Ithilien.jpg"
+define gui.game_menu_background = "gui/TN-First_Sight_of_Ithilien.jpg"
 
 
 ## Dialogue ####################################################################

@@ -18,6 +18,7 @@ transform right:
     yalign 0.85
 
 label start:
+    stop music fadeout 1.0
     play music "audio/in-the-dark.mp3"
     scene bg road
     with fade
@@ -33,7 +34,7 @@ label start:
     scene bg entrance
     with fade
 
-    "Гэндальф пустил свою термокружку по кругу, и все Хранители сделали по глотку."
+    "Гэндальф пустил свою трубку по кругу."
 
     scene bg fire
     with fade
@@ -51,11 +52,19 @@ label start:
     frodo "А куда мы пойдем потом?"
 
     gendalf """
-    У Хранителей есть только две дороги, назад в Раздол или вперед к Белой горе.
+    У Хранителей есть только две дороги, вперед к Белой горе через перевал и направо к горному озеру.
     """
+
+menu:
+    "На перевал":
+        jump mountain_path
+
+    "К горному озеру":
+        jump озеро
 
 label озеро:
     play music "audio/mountain lake.mp3"
+    play sound "audio/atmosbasement.mp3_.flac"
     scene bg swamp-3
     with fade
 
@@ -66,9 +75,12 @@ label озеро:
     Дальше у нас есть два варианта.
     """
 
+    stop voice
+    stop music
+
 menu:
 
-    "Пойти направа и спуститься вдоль ручья":
+    "Пойти направо, спуститься вдоль ручья":
         jump swamp_tree
 
     "Пойти налево, углубляясь в заболоченную долину":
@@ -86,13 +98,22 @@ label swamp_tree:
     jump mountain_path
 
 label swamp_dead:
-    play sound "audio/end-cut.mp3"
-    scene bg swamp-2
+    play music "audio/atmosbasement.mp3_.flac"
+    scene bg swamp dead
+    with fade
 
     "Группа решила пробираться по затопленной местности и пройти сквозь долину во что бы то ни стало.
     Чем они пробирались дальше, тем становилось глубже."
 
+    scene bg swamp-2
+    with fade
+    play sound "audio/end-cut.mp3"
+    with vpunch
+
     "В конце концов они столкнулись с Бамбром, Смотрителем Горных Озер и Болот. Все погибли. Плохая концовка."
+
+    stop sound
+    stop music
 
     return
 
@@ -100,7 +121,8 @@ label mountain_path:
     stop sound
     play music "audio/blizzard snow.mp3"
 
-    scene bg snow
+    scene white
+    show bg snow
     with fade
 
     "Хранители забрались на перевал."
