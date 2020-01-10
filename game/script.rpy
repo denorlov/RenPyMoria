@@ -20,7 +20,9 @@ transform right:
 label start:
     stop music fadeout 1.0
     play music "audio/in-the-dark.mp3"
-    scene bg road
+
+    scene black
+    show bg road
     with fade
 
     "Хранители провели в пути весь день."
@@ -65,7 +67,9 @@ menu:
 label озеро:
     play music "audio/mountain lake.mp3"
     play sound "audio/atmosbasement.mp3_.flac"
-    scene bg swamp-3
+
+    scene black
+    show bg swamp-3
     with fade
 
     "Хранители пришли к древнему горному озеру. Гуляет ветер. Вдалеке слышно, как что-то журчит, булькает и капает. "
@@ -95,7 +99,13 @@ label swamp_tree:
     "В 300 метрах ниже росло развесистое гниющее дерево. Фродо было ужасно интересно
     и он заглянул в дупло дерева. В дупле лежал ключ."
 
-    jump mountain_path
+menu:
+
+    "Вернуться к озеру":
+        jump озеро
+
+    "Подняться на перевал":
+        jump mountain_path
 
 label swamp_dead:
     play music "audio/atmosbasement.mp3_.flac"
@@ -121,13 +131,14 @@ label mountain_path:
     stop sound
     play music "audio/blizzard snow.mp3"
 
-    scene white
-    show bg snow
+    scene black
+    show bg snow at mid_left
     with fade
 
     "Хранители забрались на перевал."
 
-    scene bg mountains-path-2
+    scene black
+    show bg mountains-path-2 at mid_right
     with fade
     play audio "audio/rock_breaking.flac"
     with hpunch
@@ -138,15 +149,24 @@ label mountain_path:
 
     "Полил дождь, потом пошел снег, поднялся ураган."
 
+menu:
+
+    "Отступить":
+        jump озеро
+
+    "Двигаться вперед":
+        jump door
 
 label door:
     play music "audio/in-the-dark.mp3"
-    scene bg mountains-path-3
+    scene black
+    show bg mountains-path-3
     with fade
 
     "Хранителям удалось пробиться сквозь перевал. Вы спустились чуть ниже и вышли к очередному подьему."
 
-    scene bg door-2
+    scene black
+    show bg door-2
     with fade
 
     "В самом конце подьема вас ждала отвесная стена. Гэндальф внимательно посмотрел на стену."
@@ -171,6 +191,7 @@ label door:
 отчетливей, и  вскоре глазам изумленных путников открылся искусно выполненный рисунок."
 
     show frodo at left
+    with dissolve
 
     frodo "- Замочная скважина! - воскликнул Фродо, показав на еле заметное углубление в стени."
 
@@ -180,9 +201,10 @@ label door:
 label final:
 
     play music "audio/happy-end.mp3" fadeout 1.0 fadein 1.0
-    scene bg moria
+    scene black
+    show bg moria
     with fade
 
-    "Счастливый конец первой части! До новых встречь!"
+    "Счастливый конец первой части! До новых встреч!"
 
     return
