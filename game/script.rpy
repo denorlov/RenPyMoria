@@ -208,3 +208,42 @@ label final:
     "Счастливый конец первой части! До новых встреч!"
 
     return
+
+image location mark:
+    "red-map-pointer.png"
+    zoom 0.03
+
+image location mark hover:
+    "red-map-pointer-glow.png"
+    zoom 0.03
+
+screen map:
+    fixed:
+        add "map.jpg" xalign 0.5 yalign 0.2
+
+        imagebutton:
+            xalign 0.54
+            yalign 0.4
+            idle "location mark"
+            hover "location mark hover"
+            focus_mask None
+            hovered Notify(_("Озеро"))
+            action [Hide("map"), Jump("озеро")]
+
+        imagebutton:
+            xalign 0.5
+            yalign 0.5
+            idle "location mark"
+            hover "location mark hover"
+            focus_mask None
+            hovered Notify(_("Перевал"))
+            action [Hide("map"), Jump("mountain_path")]
+
+        imagebutton:
+            xalign 0.3
+            yalign 0.3
+            idle "location mark"
+            hover "location mark hover"
+            focus_mask None
+            hovered Notify(_("Болото"))
+            action [Hide("map"), Jump("swamp_tree")]
