@@ -209,11 +209,11 @@ label final:
 
     return
 
-image location mark:
+image location:
     "red-map-pointer.png"
     zoom 0.03
 
-image location mark hover:
+image location hover:
     "red-map-pointer-glow.png"
     zoom 0.03
 
@@ -222,28 +222,12 @@ screen map:
         add "map.jpg" xalign 0.5 yalign 0.2
 
         imagebutton:
-            xalign 0.54
-            yalign 0.37
-            idle "location mark"
-            hover "location mark hover"
+            xalign 0.6
+            yalign 0.5
+            idle "location"
+            hover "location hover"
             focus_mask None
+            activate_sound "audio/get-key.mp3"
+            action [Hide("map"),Jump("озеро")]
             hovered Notify(_("Озеро"))
-            action [Hide("map"), Jump("озеро")]
 
-        imagebutton:
-            xalign 0.44
-            yalign 0.29
-            idle "location mark"
-            hover "location mark hover"
-            focus_mask None
-            hovered Notify(_("Перевал"))
-            action [Hide("map"), Jump("mountain_path")]
-
-        imagebutton:
-            xalign 0.545
-            yalign 0.42
-            idle "location mark"
-            hover "location mark hover"
-            focus_mask None
-            hovered Notify(_("Болото"))
-            action [Hide("map"), Jump("swamp_tree")]
