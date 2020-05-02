@@ -17,6 +17,9 @@ transform right:
     xalign 0.95
     yalign 0.85
 
+init python:
+    observed_locations = []
+
 label start:
     stop music fadeout 1.0
     play music "audio/in-the-dark.mp3"
@@ -65,6 +68,8 @@ menu:
         jump озеро
 
 label озеро:
+    $ observed_locations.append("озеро")
+
     play music "audio/mountain lake.mp3"
     play sound "audio/atmosbasement.mp3_.flac"
 
@@ -128,6 +133,8 @@ label swamp_dead:
     return
 
 label mountain_path:
+    $ observed_locations.append("mountain_path")
+
     stop sound
     play music "audio/blizzard snow.mp3"
 
@@ -222,22 +229,33 @@ screen map:
         add "map.jpg" xalign 0.5 yalign 0.2
 
         imagebutton:
-            xalign 0.54
-            yalign 0.37
+            xalign 0.41
+            yalign 0.44
             idle "location mark"
             hover "location mark hover"
             focus_mask None
-            hovered Notify(_("Озеро"))
-            action [Hide("map"), Jump("озеро")]
+            hovered Notify(_("Лес"))
+            action [Hide("map"), Jump("start")]
 
-        imagebutton:
-            xalign 0.44
-            yalign 0.29
-            idle "location mark"
-            hover "location mark hover"
-            focus_mask None
-            hovered Notify(_("Перевал"))
-            action [Hide("map"), Jump("mountain_path")]
+        if "озеро" in observed_locations:
+            imagebutton:
+                xalign 0.54
+                yalign 0.37
+                idle "location mark"
+                hover "location mark hover"
+                focus_mask None
+                hovered Notify(_("Озеро"))
+                action [Hide("map"), Jump("озеро")]
+
+        if "mountain_path" in observed_locations:
+            imagebutton:
+                xalign 0.44
+                yalign 0.29
+                idle "location mark"
+                hover "location mark hover"
+                focus_mask None
+                hovered Notify(_("Перевал"))
+                action [Hide("map"), Jump("mountain_path")]
 
         imagebutton:
             xalign 0.545
@@ -247,3 +265,12 @@ screen map:
             focus_mask None
             hovered Notify(_("Болото"))
             action [Hide("map"), Jump("swamp_tree")]
+
+        imagebutton:
+            xalign 0.63
+            yalign 0.44
+            idle "location mark"
+            hover "location mark hover"
+            focus_mask None
+            hovered Notify(_("Врата"))
+            action [Hide("map"), Jump("door")]
