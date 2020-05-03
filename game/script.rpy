@@ -97,6 +97,8 @@ menu:
 
 
 label swamp_tree:
+    $ observed_locations.append("swamp_tree")
+
     play music "audio/swamp-sounds.mp3"
     scene bg swamp
 
@@ -165,6 +167,8 @@ menu:
         jump door
 
 label door:
+    $ observed_locations.append("door")
+
     play music "audio/in-the-dark.mp3"
     scene black
     show bg mountains-path-3
@@ -257,20 +261,22 @@ screen map:
                 hovered Notify(_("Перевал"))
                 action [Hide("map"), Jump("mountain_path")]
 
-        imagebutton:
-            xalign 0.545
-            yalign 0.42
-            idle "location mark"
-            hover "location mark hover"
-            focus_mask None
-            hovered Notify(_("Болото"))
-            action [Hide("map"), Jump("swamp_tree")]
+        if "swamp_tree" in observed_locations:
+            imagebutton:
+                xalign 0.545
+                yalign 0.42
+                idle "location mark"
+                hover "location mark hover"
+                focus_mask None
+                hovered Notify(_("Болото"))
+                action [Hide("map"), Jump("swamp_tree")]
 
-        imagebutton:
-            xalign 0.63
-            yalign 0.44
-            idle "location mark"
-            hover "location mark hover"
-            focus_mask None
-            hovered Notify(_("Врата"))
-            action [Hide("map"), Jump("door")]
+        if "door" in observed_locations:
+            imagebutton:
+                xalign 0.63
+                yalign 0.44
+                idle "location mark"
+                hover "location mark hover"
+                focus_mask None
+                hovered Notify(_("Врата"))
+                action [Hide("map"), Jump("door")]
